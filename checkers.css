@@ -1,0 +1,57 @@
+h1 {
+    color: slateblue;
+    text-align: center;
+    
+}
+
+
+
+td {
+    position: relative;
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+    /* td:nth-child(odd) {
+        background-color: white; */
+    /* } */
+    tr:nth-child(odd) td:nth-child(even) {
+        background-color: pink;
+    }
+    
+    tr:nth-child(even) td:nth-child(odd) {
+        background-color: pink;
+    }
+    
+    
+    .game-piece {
+        width: 60px;
+        height: 60px;
+    }
+
+    img[alt="black game piece"] {
+        position: absolute;
+        left: 100px;
+        top: 100px;
+  
+    }
+
+    tr:nth-child(1) td:nth-child(1) {
+        z-index: 0;
+        
+    }
+.red {
+    background-size: contain;
+    z-index: 1;
+    background-image: url("https://cdn0.iconfinder.com/data/icons/board-games-flat-1/48/Games_BoardGames_Artboard_14-512.png");
+}
+
+
+.black {
+    background-size: contain;
+    z-index: 1;
+    background-image: url("https://cdn0.iconfinder.com/data/icons/board-games-colored-1/48/Games_BoardGames_Artboard_15-512.png");
+}   
