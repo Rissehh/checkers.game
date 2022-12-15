@@ -206,13 +206,14 @@ h8.addEventListener("click", stuff);
 
 
 
-
-
 //Highlights clicked squares
-function stuff() {
+function stuff(event) {
     unhighlight()
     this.style.backgroundColor = 'grey'
     id = this
+    console.log(event.target.dataset.row)
+    let x = parseInt(event.target.dataset.row)
+    console.log(x)
 }
 
 
