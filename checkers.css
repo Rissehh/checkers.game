@@ -1,9 +1,8 @@
 h1 {
-    color: slateblue;
-    text-align: center;
-    
-}
-
+    color: rgb(0, 0, 0);
+    text-align: left;
+   
+} /*  Title  "Checkers color" */
 
 
 td {
@@ -11,47 +10,35 @@ td {
     text-align: center;
     width: 50px;
     height: 50px;
-    border: 1px solid black;
-    background-color: white;
+    border: 2px solid black;
+    background-color: rgb(255, 255, 255);
+
+    /* This is the border around each square */
 }
 
-    /* td:nth-child(odd) {
-        background-color: white; */
-    /* } */
-    tr:nth-child(odd) td:nth-child(even) {
-        background-color: pink;
-    }
-    
-    tr:nth-child(even) td:nth-child(odd) {
-        background-color: pink;
-    }
-    
-    
-    .game-piece {
-        width: 60px;
-        height: 60px;
-    }
+tr:nth-child(odd) td:nth-child(even) {
+    background-color: rgb(0, 0, 0);
+}   /* coloring the odd table and even squares white */
 
-    img[alt="black game piece"] {
-        position: absolute;
-        left: 100px;
-        top: 100px;
-  
-    }
+tr:nth-child(even) td:nth-child(odd) {
+    background-color: rgb(0, 0, 0);
+}   /* coloring the even table and odd squares white */
 
-    tr:nth-child(1) td:nth-child(1) {
-        z-index: 0;
-        
-    }
+
+.game-piece /* These are the sizes of the game peices */{
+    width: 60px;
+    height: 60px;
+}
+
+
 .red {
     background-size: contain;
     z-index: 1;
     background-image: url("https://cdn0.iconfinder.com/data/icons/board-games-flat-1/48/Games_BoardGames_Artboard_14-512.png");
 }
 
-
-.black {
+.black{
     background-size: contain;
     z-index: 1;
     background-image: url("https://cdn0.iconfinder.com/data/icons/board-games-colored-1/48/Games_BoardGames_Artboard_15-512.png");
-}   
+}
