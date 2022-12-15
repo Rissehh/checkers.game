@@ -213,7 +213,10 @@ function stuff(event) {
     id = this
     console.log(event.target.dataset.row)
     let x = parseInt(event.target.dataset.row)
-    console.log(x)
+    console.log
+    console.log(event.target.dataset.colume)
+    let y = parseInt(event.target.dataset.colume)
+    console.log
 }
 
 
