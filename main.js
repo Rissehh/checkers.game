@@ -9,9 +9,9 @@ function Board() {
         for (var j = 0; j < 8; j++) {
             this.grid[i][j] = null;
         }
-    }  
+    }   
 }
-   
+    
 // Define the Piece object constructor
 function Piece(color, type) {
     this.color = color;
@@ -217,7 +217,7 @@ let clickedpiece = 0;
 //Processes functions when a certain square is clicked
 function onclick(event) {
     unhighlight()
-   
+    
 
     this.style.backgroundColor = 'grey'                 //this highlights the clicked square
     id = this                                           //this makes the currently clicked square the new id
@@ -246,7 +246,7 @@ function CheckLegalMove() {
 
 
 function highlightLegalMove() {
-   
+    
 }
 
 
