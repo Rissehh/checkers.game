@@ -1,30 +1,37 @@
 //Board function to create a new board
 function Board() {
+
     this.grid = [];
- 
+
     // Initialize the grid with empty positions
     for (var i = 0; i < 8; i++) {
         this.grid[i] = [];
         for (var j = 0; j < 8; j++) {
-        this.grid[i][j] = null;
+            this.grid[i][j] = null;
         }
-    }
+    }  
 }
-
+   
 // Define the Piece object constructor
 function Piece(color, type) {
     this.color = color;
     this.type = type;
-    }
-   
+}
 
 // Define a method for placing a Piece on the Board
 Board.prototype.placePiece = function(piece, x, y) {
-this.grid[x][y] = piece;
+    this.grid[x][y] = piece;
 };
- 
+
+Board.prototype.removePiece = function(x, y) {
+    this.grid[x][y] = null;
+};
+
+
+
 // Create a new Board object
 var board = new Board();
+
 
 // Create some Piece objects, assign a color and status
 var redpiece1 = new Piece("red", "pawn");
@@ -53,7 +60,6 @@ var blackpiece10 = new Piece("black", "pawn");
 var blackpiece11 = new Piece("black", "pawn");
 var blackpiece12 = new Piece("black", "pawn");
 
- 
 // Place the Piece objects on the Board
 board.placePiece(redpiece1, 0, 0);
 board.placePiece(redpiece2, 0, 2);
@@ -86,6 +92,7 @@ board.placePiece(blackpiece12, 7, 7);
 //sets id as a variable to temporarily reference "a1" resolving backgroundColor reference errors.
 //This variable is used to hold previously clicked element
 let id = document.getElementById("a1")
+
 
 
 //create ids for each place on the board
@@ -129,6 +136,7 @@ let h4 = document.getElementById("h4")
 let h6 = document.getElementById("h6")
 let h8 = document.getElementById("h8")
 
+
 //add red pieces to the red side
 a1.classList.add("red")
 a3.classList.add("red")
@@ -164,84 +172,85 @@ h8.classList.add("black")
 
 
 //adds click listeners to squares in HTML
-a1.addEventListener("click", stuff);
-a3.addEventListener("click", stuff);
-a5.addEventListener("click", stuff);
-a7.addEventListener("click", stuff);
+a1.addEventListener("click", onclick);
+a3.addEventListener("click", onclick);
+a5.addEventListener("click", onclick);
+a7.addEventListener("click", onclick);
 
-b2.addEventListener("click", stuff);
-b4.addEventListener("click", stuff);
-b6.addEventListener("click", stuff);
-b8.addEventListener("click", stuff);
+b2.addEventListener("click", onclick);
+b4.addEventListener("click", onclick);
+b6.addEventListener("click", onclick);
+b8.addEventListener("click", onclick);
 
-c1.addEventListener("click", stuff);
-c3.addEventListener("click", stuff);
-c5.addEventListener("click", stuff);
-c7.addEventListener("click", stuff);
+c1.addEventListener("click", onclick);
+c3.addEventListener("click", onclick);
+c5.addEventListener("click", onclick);
+c7.addEventListener("click", onclick);
 
-d2.addEventListener("click", stuff);
-d4.addEventListener("click", stuff);
-d6.addEventListener("click", stuff);
-d8.addEventListener("click", stuff);
+d2.addEventListener("click", onclick);
+d4.addEventListener("click", onclick);
+d6.addEventListener("click", onclick);
+d8.addEventListener("click", onclick);
 
-e1.addEventListener("click", stuff);
-e3.addEventListener("click", stuff);
-e5.addEventListener("click", stuff);
-e7.addEventListener("click", stuff);
+e1.addEventListener("click", onclick);
+e3.addEventListener("click", onclick);
+e5.addEventListener("click", onclick);
+e7.addEventListener("click", onclick);
 
-f2.addEventListener("click", stuff);
-f4.addEventListener("click", stuff);
-f6.addEventListener("click", stuff);
-f8.addEventListener("click", stuff);
+f2.addEventListener("click", onclick);
+f4.addEventListener("click", onclick);
+f6.addEventListener("click", onclick);
+f8.addEventListener("click", onclick);
 
-g1.addEventListener("click", stuff);
-g3.addEventListener("click", stuff);
-g5.addEventListener("click", stuff);
-g7.addEventListener("click", stuff);
+g1.addEventListener("click", onclick);
+g3.addEventListener("click", onclick);
+g5.addEventListener("click", onclick);
+g7.addEventListener("click", onclick);
 
-h2.addEventListener("click", stuff);
-h4.addEventListener("click", stuff);
-h6.addEventListener("click", stuff);
-h8.addEventListener("click", stuff);
+h2.addEventListener("click", onclick);
+h4.addEventListener("click", onclick);
+h6.addEventListener("click", onclick);
+h8.addEventListener("click", onclick);
 
+let clickedpiece = 0;
 
-
-//Highlights clicked squares
-function stuff(event) {
+//Processes functions when a certain square is clicked
+function onclick(event) {
     unhighlight()
-    this.style.backgroundColor = 'grey'
-    id = this
-    console.log(event.target.dataset.row)
+   
+
+    this.style.backgroundColor = 'grey'                 //this highlights the clicked square
+    id = this                                           //this makes the currently clicked square the new id
+
+
     let x = parseInt(event.target.dataset.row)
-    console.log
-    console.log(event.target.dataset.colume)
-    let y = parseInt(event.target.dataset.colume)
-    console.log
+    let y = parseInt(event.target.dataset.column)
+    board.placePiece(blackpiece12, 4, 0);                //sets to a certain spot  
+    console.log(board)
+    Move(x, y)                                           //calls the move function which just removes the clicked piece from the JS grid
 }
 
 
 
-// the highlight function will take an element as an argument
+
+
+// this unhighlights the previous square that was clicked
 function unhighlight() {
     id.style.backgroundColor = 'black'
 }
 
+
 function CheckLegalMove() {
-   
-}
 
-function Move() {
-   
 }
 
 
-// for (var i in grid, :
+function highlightLegalMove() {
+   
+}
 
 
-
-// // // Define the move method for the Piece object
-// // Piece.prototype.move = function(x, y)
-// // {
-
-// // // Code for moving the piece to position (x, y)
-// // };
+function Move(x, y) {
+    board.removePiece(x, y)
+    console.log(board)
+}
