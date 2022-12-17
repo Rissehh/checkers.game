@@ -1,50 +1,46 @@
 h1 {
-    color: rgb(0, 0, 0);
-    text-align: left;
-    
+  color: rgb(0, 0, 0);
+  text-align: left;
 } /*  Title  "Checkers color" */
 
-
 td {
-    position: relative;
-    text-align: center;
-    width: 50px;
-    height: 50px;
-    border: 2px solid black;
-    background-color: rgb(255, 255, 255);
+  position: relative;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border: 2px solid black;
+  background-color: rgb(255, 255, 255);
 
-    /* This is the border around each square */
+  /* This is the border around each square */
 }
 
 tr:nth-child(odd) td:nth-child(even) {
-    background-color: rgb(0, 0, 0);
-}   /* coloring the odd table and even squares white */
+  background-color: rgb(0, 0, 0);
+} /* coloring the odd table and even squares white */
 
 tr:nth-child(even) td:nth-child(odd) {
-    background-color: rgb(0, 0, 0);
-}   /* coloring the even table and odd squares white */
+  background-color: rgb(0, 0, 0);
+} /* coloring the even table and odd squares white */
 
-
-.game-piece /* These are the sizes of the game peices */{
-    width: 60px;
-    height: 60px;
-} 
-
+.game-piece /* These are the sizes of the game peices */ {
+  width: 60px;
+  height: 60px;
+}
 
 .red {
-    background-size: contain;
-    z-index: 1;
-    background-image: url("./redpiece.png");
+  background-size: contain;
+  z-index: 1;
+  background-image: url("./redpiece.png");
 }
 
-.black{
-    background-size: contain;
-    z-index: 1;
-    background-image: url("./blackpiece.png");
+.black {
+  background-size: contain;
+  z-index: 1;
+  background-image: url("./blackpiece.png");
 }
 
-.none{
-    background-size: contain;
-    z-index: 1;
-    background-image: url();
+.none {
+  background-size: contain;
+  z-index: 1;
+  background-image: url();
 }
