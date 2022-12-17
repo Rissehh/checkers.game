@@ -1,7 +1,7 @@
 h1 {
     color: rgb(0, 0, 0);
     text-align: left;
-   
+    
 } /*  Title  "Checkers color" */
 
 
@@ -28,17 +28,23 @@ tr:nth-child(even) td:nth-child(odd) {
 .game-piece /* These are the sizes of the game peices */{
     width: 60px;
     height: 60px;
-}
+} 
 
 
 .red {
     background-size: contain;
     z-index: 1;
-    background-image: url("https://cdn0.iconfinder.com/data/icons/board-games-flat-1/48/Games_BoardGames_Artboard_14-512.png");
+    background-image: url("./redpiece.png");
 }
 
 .black{
     background-size: contain;
     z-index: 1;
-    background-image: url("https://cdn0.iconfinder.com/data/icons/board-games-colored-1/48/Games_BoardGames_Artboard_15-512.png");
+    background-image: url("./blackpiece.png");
+}
+
+.none{
+    background-size: contain;
+    z-index: 1;
+    background-image: url();
 }

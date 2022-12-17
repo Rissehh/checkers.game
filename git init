@@ -4,3 +4,12 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://git.generalassemb.ly/mikemalfara/Checkers-project.git
 git push -u origin main
+
+
+
+
+
+git pull 
+git add . 
+git commit -m "X" 
+git push origin test-branch
