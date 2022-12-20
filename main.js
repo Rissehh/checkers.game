@@ -210,7 +210,7 @@ h8.addEventListener("click", onclick);
 //Processes functions when a certain square is clicked
 function onclick(event) {
   unhighlight();
-
+console.log(event.target.classList.remove("red","black"))
   this.style.backgroundColor = "grey"; //this highlights the clicked square
   id = this; //this makes the currently clicked square the new id
 
@@ -232,6 +232,5 @@ function highlightLegalMove() {}
 
 function Move(x, y) {
   board.removePiece(x, y);
-  a1.classList.add("none")
   console.log(board);
 }
