@@ -226,11 +226,19 @@ function unhighlight() {
   id.style.backgroundColor = "black";
 }
 
-function CheckLegalMove() {}
+function CheckLegalMove(event) {
+  let currentRow = parseInt(event.target.dataset.row);
+  let currentColumn = parseInt(event.target.dataset.column);
 
-function highlightLegalMove() {}
 
-function Move(x, y) {
-  board.removePiece(x, y);
-  console.log(board);
 }
+
+function highlightLegalMove() {
+
+
+}
+
+function Move(currentRow, currentColumn) {
+  board.removePiece(currentRow, currentColumn);
+}
+
