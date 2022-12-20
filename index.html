@@ -1,100 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkers</title>
-  <link rel="stylesheet" href="checkers.css">
-  <script defer src="main.js"></script>
-</head>
-<h1> Checkers </h1>
-<body>
-  <table>
-    <tr>
-      <td id="h1" data-row="7" data-column="0"></td>
-      <td id="h2" data-row="7" data-column="1"></td>
-      <td id="h3" data-row="7" data-column="2"></td>
-      <td id="h4" data-row="7" data-column="3"></td>
-      <td id="h5" data-row="7" data-column="4"></td>
-      <td id="h6" data-row="7" data-column="5"></td>
-      <td id="h7" data-row="7" data-column="6"></td>
-      <td id="h8" data-row="7" data-column="7"></td>
-    </tr>
-    <tr>
-      <td id="g1" data-row="6" data-column="0"></td>
-      <td id="g2" data-row="6" data-column="1"></td>
-      <td id="g3" data-row="6" data-column="2"></td>
-      <td id="g4" data-row="6" data-column="3"></td>
-      <td id="g5" data-row="6" data-column="4"></td>
-      <td id="g6" data-row="6" data-column="5"></td>
-      <td id="g7" data-row="6" data-column="6"></td>
-      <td id="g8" data-row="6" data-column="7"></td>
-    </tr>
-    <tr>
-      <td id="f1" data-row="5" data-column="0"></td>
-      <td id="f2" data-row="5" data-column="1"></td>
-      <td id="f3" data-row="5" data-column="2"></td>
-      <td id="f4" data-row="5" data-column="3"></td>
-      <td id="f5" data-row="5" data-column="4"></td>
-      <td id="f6" data-row="5" data-column="5"></td>
-      <td id="f7" data-row="5" data-column="6"></td>
-      <td id="f8" data-row="5" data-column="7"></td>
-    </tr>
-    <tr>
-      <td id="e1" data-row="4" data-column="0"></td>
-      <td id="e2" data-row="4" data-column="1"></td>
-      <td id="e3" data-row="4" data-column="2"></td>
-      <td id="e4" data-row="4" data-column="3"></td>
-      <td id="e5" data-row="4" data-column="4"></td>
-      <td id="e6" data-row="4" data-column="5"></td>
-      <td id="e7" data-row="4" data-column="6"></td>
-      <td id="e8" data-row="4" data-column="7"></td>
-    </tr>
-    <tr>
-      <td id="d1" data-row="3" data-column="0"></td>
-      <td id="d2" data-row="3" data-column="1"></td>
-      <td id="d3" data-row="3" data-column="2"></td>
-      <td id="d4" data-row="3" data-column="3"></td>
-      <td id="d5" data-row="3" data-column="4"></td>
-      <td id="d6" data-row="3" data-column="5"></td>
-      <td id="d7" data-row="3" data-column="6"></td>
-      <td id="d8" data-row="3" data-column="7"></td>
-    </tr>
-    <tr>
-      <td id="c1" data-row="2" data-column="0"></td>
-      <td id="c2" data-row="2" data-column="1"></td>
-      <td id="c3" data-row="2" data-column="2"></td>
-      <td id="c4" data-row="2" data-column="3"></td>
-      <td id="c5" data-row="2" data-column="4"></td>
-      <td id="c6" data-row="2" data-column="5"></td>
-      <td id="c7" data-row="2" data-column="6"></td>
-      <td id="c8" data-row="2" data-column="7"></td>
-    </tr>
-    <tr>
-      <td id="b1" data-row="1" data-column="0"></td>
-      <td id="b2" data-row="1" data-column="1"></td>
-      <td id="b3" data-row="1" data-column="2"></td>
-      <td id="b4" data-row="1" data-column="3"></td>
-      <td id="b5" data-row="1" data-column="4"></td>
-      <td id="b6" data-row="1" data-column="5"></td>
-      <td id="b7" data-row="1" data-column="6"></td>
-      <td id="b8" data-row="1" data-column="7"></td>
-    </tr>
-    <tr>
-      <td id="a1" data-row="0" data-column="0"></td>
-      <td id="a2" data-row="0" data-column="1"></td>
-      <td id="a3" data-row="0" data-column="2"></td>
-      <td id="a4" data-row="0" data-column="3"></td>
-      <td id="a5" data-row="0" data-column="4"></td>
-      <td id="a6" data-row="0" data-column="5"></td>
-      <td id="a7" data-row="0" data-column="6"></td>
-      <td id="a8" data-row="0" data-column="7"></td>
-    </tr>
-  </table>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkers</title>
+    <link rel="stylesheet" href="checkers.css" />
+    <script defer src="main.js"></script>
+  </head>
+  <h1>Checkers</h1>
+  <body>
+    <table>
+      <tr>
+        <td id="h1" data-row="7" data-column="0"></td>
+        <td id="h2" data-row="7" data-column="1"></td>
+        <td id="h3" data-row="7" data-column="2"></td>
+        <td id="h4" data-row="7" data-column="3"></td>
+        <td id="h5" data-row="7" data-column="4"></td>
+        <td id="h6" data-row="7" data-column="5"></td>
+        <td id="h7" data-row="7" data-column="6"></td>
+        <td id="h8" data-row="7" data-column="7"></td>
+      </tr>
+      <tr>
+        <td id="g1" data-row="6" data-column="0"></td>
+        <td id="g2" data-row="6" data-column="1"></td>
+        <td id="g3" data-row="6" data-column="2"></td>
+        <td id="g4" data-row="6" data-column="3"></td>
+        <td id="g5" data-row="6" data-column="4"></td>
+        <td id="g6" data-row="6" data-column="5"></td>
+        <td id="g7" data-row="6" data-column="6"></td>
+        <td id="g8" data-row="6" data-column="7"></td>
+      </tr>
+      <tr>
+        <td id="f1" data-row="5" data-column="0"></td>
+        <td id="f2" data-row="5" data-column="1"></td>
+        <td id="f3" data-row="5" data-column="2"></td>
+        <td id="f4" data-row="5" data-column="3"></td>
+        <td id="f5" data-row="5" data-column="4"></td>
+        <td id="f6" data-row="5" data-column="5"></td>
+        <td id="f7" data-row="5" data-column="6"></td>
+        <td id="f8" data-row="5" data-column="7"></td>
+      </tr>
+      <tr>
+        <td id="e1" data-row="4" data-column="0"></td>
+        <td id="e2" data-row="4" data-column="1"></td>
+        <td id="e3" data-row="4" data-column="2"></td>
+        <td id="e4" data-row="4" data-column="3"></td>
+        <td id="e5" data-row="4" data-column="4"></td>
+        <td id="e6" data-row="4" data-column="5"></td>
+        <td id="e7" data-row="4" data-column="6"></td>
+        <td id="e8" data-row="4" data-column="7"></td>
+      </tr>
+      <tr>
+        <td id="d1" data-row="3" data-column="0"></td>
+        <td id="d2" data-row="3" data-column="1"></td>
+        <td id="d3" data-row="3" data-column="2"></td>
+        <td id="d4" data-row="3" data-column="3"></td>
+        <td id="d5" data-row="3" data-column="4"></td>
+        <td id="d6" data-row="3" data-column="5"></td>
+        <td id="d7" data-row="3" data-column="6"></td>
+        <td id="d8" data-row="3" data-column="7"></td>
+      </tr>
+      <tr>
+        <td id="c1" data-row="2" data-column="0"></td>
+        <td id="c2" data-row="2" data-column="1"></td>
+        <td id="c3" data-row="2" data-column="2"></td>
+        <td id="c4" data-row="2" data-column="3"></td>
+        <td id="c5" data-row="2" data-column="4"></td>
+        <td id="c6" data-row="2" data-column="5"></td>
+        <td id="c7" data-row="2" data-column="6"></td>
+        <td id="c8" data-row="2" data-column="7"></td>
+      </tr>
+      <tr>
+        <td id="b1" data-row="1" data-column="0"></td>
+        <td id="b2" data-row="1" data-column="1"></td>
+        <td id="b3" data-row="1" data-column="2"></td>
+        <td id="b4" data-row="1" data-column="3"></td>
+        <td id="b5" data-row="1" data-column="4"></td>
+        <td id="b6" data-row="1" data-column="5"></td>
+        <td id="b7" data-row="1" data-column="6"></td>
+        <td id="b8" data-row="1" data-column="7"></td>
+      </tr>
+      <tr>
+        <td id="a1" data-row="0" data-column="0"></td>
+        <td id="a2" data-row="0" data-column="1"></td>
+        <td id="a3" data-row="0" data-column="2"></td>
+        <td id="a4" data-row="0" data-column="3"></td>
+        <td id="a5" data-row="0" data-column="4"></td>
+        <td id="a6" data-row="0" data-column="5"></td>
+        <td id="a7" data-row="0" data-column="6"></td>
+        <td id="a8" data-row="0" data-column="7"></td>
+      </tr>
+    </table>
+  </body>
 </html>
-
-
-
-
