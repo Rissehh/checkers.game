@@ -6,7 +6,7 @@ function Board() {
   for (var i = 0; i < 8; i++) {
     this.grid[i] = [];
     for (var j = 0; j < 8; j++) {
-      this.grid[i][j] = null;
+      this.grid [i][j] = null;
     }
   }
 }
@@ -31,59 +31,39 @@ Board.prototype.removePiece = function (x, y) {
 var board = new Board();
 
 //#region // Create some Piece objects, assign a color and status
-var redpiece1 = new Piece("red", "pawn");
-var redpiece2 = new Piece("red", "pawn");
-var redpiece3 = new Piece("red", "pawn");
-var redpiece4 = new Piece("red", "pawn");
-var redpiece5 = new Piece("red", "pawn");
-var redpiece6 = new Piece("red", "pawn");
-var redpiece7 = new Piece("red", "pawn");
-var redpiece8 = new Piece("red", "pawn");
-var redpiece9 = new Piece("red", "pawn");
-var redpiece10 = new Piece("red", "pawn");
-var redpiece11 = new Piece("red", "pawn");
-var redpiece12 = new Piece("red", "pawn");
+var redpiece = "red";
 
-var blackpiece1 = new Piece("black", "pawn");
-var blackpiece2 = new Piece("black", "pawn");
-var blackpiece3 = new Piece("black", "pawn");
-var blackpiece4 = new Piece("black", "pawn");
-var blackpiece5 = new Piece("black", "pawn");
-var blackpiece6 = new Piece("black", "pawn");
-var blackpiece7 = new Piece("black", "pawn");
-var blackpiece8 = new Piece("black", "pawn");
-var blackpiece9 = new Piece("black", "pawn");
-var blackpiece10 = new Piece("black", "pawn");
-var blackpiece11 = new Piece("black", "pawn");
-var blackpiece12 = new Piece("black", "pawn");
+var blackpiece = "black";
+
+
 //#endregion
 
 //#region // Place the Piece objects on the Board
-board.placePiece(redpiece1, 0, 0);
-board.placePiece(redpiece2, 0, 2);
-board.placePiece(redpiece3, 0, 4);
-board.placePiece(redpiece4, 0, 6);
-board.placePiece(redpiece5, 1, 1);
-board.placePiece(redpiece6, 1, 3);
-board.placePiece(redpiece7, 1, 5);
-board.placePiece(redpiece8, 1, 7);
-board.placePiece(redpiece9, 2, 0);
-board.placePiece(redpiece10, 2, 2);
-board.placePiece(redpiece11, 2, 4);
-board.placePiece(redpiece12, 2, 6);
+board.placePiece(redpiece, 0, 0);
+board.placePiece(redpiece, 0, 2);
+board.placePiece(redpiece, 0, 4);
+board.placePiece(redpiece, 0, 6);
+board.placePiece(redpiece, 1, 1);
+board.placePiece(redpiece, 1, 3);
+board.placePiece(redpiece, 1, 5);
+board.placePiece(redpiece, 1, 7);
+board.placePiece(redpiece, 2, 0);
+board.placePiece(redpiece, 2, 2);
+board.placePiece(redpiece, 2, 4);
+board.placePiece(redpiece, 2, 6);
 
-board.placePiece(blackpiece1, 5, 1);
-board.placePiece(blackpiece2, 5, 3);
-board.placePiece(blackpiece3, 5, 5);
-board.placePiece(blackpiece4, 5, 7);
-board.placePiece(blackpiece5, 6, 0);
-board.placePiece(blackpiece6, 6, 2);
-board.placePiece(blackpiece7, 6, 4);
-board.placePiece(blackpiece8, 6, 6);
-board.placePiece(blackpiece9, 7, 1);
-board.placePiece(blackpiece10, 7, 3);
-board.placePiece(blackpiece11, 7, 5);
-board.placePiece(blackpiece12, 7, 7);
+board.placePiece(blackpiece, 5, 1);
+board.placePiece(blackpiece, 5, 3);
+board.placePiece(blackpiece, 5, 5);
+board.placePiece(blackpiece, 5, 7);
+board.placePiece(blackpiece, 6, 0);
+board.placePiece(blackpiece, 6, 2);
+board.placePiece(blackpiece, 6, 4);
+board.placePiece(blackpiece, 6, 6);
+board.placePiece(blackpiece, 7, 1);
+board.placePiece(blackpiece, 7, 3);
+board.placePiece(blackpiece, 7, 5);
+board.placePiece(blackpiece, 7, 7);
 //#endregion
 
 //sets id as a variable to temporarily reference "a1" resolving backgroundColor reference errors.
@@ -207,18 +187,36 @@ h6.addEventListener("click", onclick);
 h8.addEventListener("click", onclick);
 //#endregion
 
-//Processes functions when a certain square is clicked
-function onclick(event) {
-  unhighlight();
-console.log(event.target.classList.remove("red","black"))
-  this.style.backgroundColor = "grey"; //this highlights the clicked square
-  id = this; //this makes the currently clicked square the new id
 
-  let x = parseInt(event.target.dataset.row);
-  let y = parseInt(event.target.dataset.column);
-  board.placePiece(blackpiece12, 4, 0); //sets to a certain spot
-  console.log(board);
-  Move(x, y); //calls the move function which just removes the clicked piece from the JS grid
+
+let color = "red"
+
+//Processes functions when a certain square is clicked
+//In theory - 
+
+function onclick(event) {          
+
+  
+
+  unhighlight();                            //unhighlights last clicked piece
+  this.style.backgroundColor = "grey";      //this highlights the clicked square
+
+
+  event.target.classList.remove("red","black")     //removes piece
+
+  
+  id = this;           //this makes the currently clicked square the new id
+
+
+  let x = parseInt(event.target.dataset.row);        
+  let y = parseInt(event.target.dataset.column);     
+
+  CheckLegalMove(event)
+
+
+  //Move(x, y);       //calls the move function which just removes the clicked piece from the JS grid
+
+
 }
 
 // this unhighlights the previous square that was clicked
@@ -226,11 +224,20 @@ function unhighlight() {
   id.style.backgroundColor = "black";
 }
 
-function CheckLegalMove() {}
+function CheckLegalMove(event) {
+  let currentRow = parseInt(event.target.dataset.row);
+  let currentColumn = parseInt(event.target.dataset.column);
+  let color = board.grid [currentRow][currentColumn]
+  console.log(color)
 
-function highlightLegalMove() {}
 
-function Move(x, y) {
-  board.removePiece(x, y);
-  console.log(board);
 }
+
+function highlightLegalMove() {
+
+
+}
+
+// function Move(currentRow, currentColumn) {
+//   board.removePiece(currentRow, currentColumn);
+// }

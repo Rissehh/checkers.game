@@ -39,8 +39,14 @@ tr:nth-child(even) td:nth-child(odd) {
   background-image: url("./blackpiece.png");
 }
 
-.none {
+.redking {
   background-size: contain;
   z-index: 1;
-  background-image: url();
+  background-image: url("./redpiece.png");
+}
+
+.blackking {
+  background-size: contain;
+  z-index: 1;
+  background-image: url("./blackpiece.png");
 }
