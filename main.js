@@ -32,7 +32,6 @@ var board = new Board();
 
 //#region // Create some Piece objects, assign a color and status
 var redpiece = "red";
-
 var blackpiece = "black";
 
 
@@ -68,7 +67,9 @@ board.placePiece(blackpiece, 7, 7);
 
 //sets id as a variable to temporarily reference "a1" resolving backgroundColor reference errors.
 //This variable is used to hold previously clicked element
-let id = document.getElementById("a1");
+let id = document.getElementById("a1")
+var visualGrid = document.getElementsByTagName("td");
+
 
 //#region /create ids for each place on the board
 let a1 = document.getElementById("a1");
@@ -188,22 +189,14 @@ h8.addEventListener("click", onclick);
 //#endregion
 
 
-
-let color = "red"
-
 //Processes functions when a certain square is clicked
-//In theory - 
+//In theory - we should click a piece. The spot should become highlighted a
 
 function onclick(event) {          
-
-  
-
   unhighlight();                            //unhighlights last clicked piece
   this.style.backgroundColor = "grey";      //this highlights the clicked square
-
-
-  event.target.classList.remove("red","black")     //removes piece
-
+  
+  //event.target.classList.remove("red","black")     //removes piece
   
   id = this;           //this makes the currently clicked square the new id
 
@@ -213,23 +206,66 @@ function onclick(event) {
 
   CheckLegalMove(event)
 
-
   //Move(x, y);       //calls the move function which just removes the clicked piece from the JS grid
 
 
 }
 
-// this unhighlights the previous square that was clicked
+// this resets the entire board black after every click
 function unhighlight() {
-  id.style.backgroundColor = "black";
+
+  for (var i = 0; i < visualGrid.length; i++) {
+
+    var td = visualGrid[i];
+  
+    // Check if the data-row attribute is even
+    if (td.getAttribute("data-row") % 2 == 1) {
+      if (td.getAttribute("data-column") % 2 == 1) {
+        td.style.backgroundColor = "black";
+      }
+    }
+    if (td.getAttribute("data-row") % 2 == 0) {
+      if (td.getAttribute("data-column") % 2 == 0) {
+        td.style.backgroundColor = "black";
+      }
+    }
+  }
 }
 
 function CheckLegalMove(event) {
+
   let currentRow = parseInt(event.target.dataset.row);
   let currentColumn = parseInt(event.target.dataset.column);
-  let color = board.grid [currentRow][currentColumn]
+  color = board.grid [currentRow][currentColumn]
   console.log(color)
 
+    if (color = "red") {
+      var leftsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn+1) + '"]');
+      var rightsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn-1) + '"]');
+      
+      leftsquare.forEach(function(element) {
+        element.style.backgroundColor = "blue";
+      });
+
+      rightsquare.forEach(function(element) {
+        element.style.backgroundColor = "blue";
+      });
+
+    }
+
+    if (color = "black") {
+      var leftsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn+1) + '"]');
+      var rightsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn-1) + '"]');
+      
+      leftsquare.forEach(function(element) {
+        element.style.backgroundColor = "grey";
+      });
+
+      rightsquare.forEach(function(element) {
+        element.style.backgroundColor = "grey";
+      });
+
+    }
 
 }
 
