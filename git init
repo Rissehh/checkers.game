@@ -13,3 +13,6 @@ git pull
 git add . 
 git commit -m "X" 
 git push origin test-branch
+
+
+git remote update
