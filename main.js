@@ -63,12 +63,15 @@ board.placePiece(blackpiece, 7, 1);
 board.placePiece(blackpiece, 7, 3);
 board.placePiece(blackpiece, 7, 5);
 board.placePiece(blackpiece, 7, 7);
+
+board.placePiece(blackpiece, 3, 3);
+
 //#endregion
 
 //sets id as a variable to temporarily reference "a1" resolving backgroundColor reference errors.
 //This variable is used to hold previously clicked element
 let id = document.getElementById("a1")
-var visualGrid = document.getElementsByTagName("td");
+var visualGrid = document.getElementsByTagName("td");         //sets up the 
 
 
 //#region /create ids for each place on the board
@@ -190,41 +193,39 @@ h8.addEventListener("click", onclick);
 
 
 //Processes functions when a certain square is clicked
-//In theory - we should click a piece. The spot should become highlighted a
+//In theory - we should click a piece. The spot should become highlighted and possible moves become highlighted. 
+//Another click then takes place to move the piece to the new square
 
 function onclick(event) {          
   unhighlight();                            //unhighlights last clicked piece
   this.style.backgroundColor = "grey";      //this highlights the clicked square
   
-  //event.target.classList.remove("red","black")     //removes piece
-  
-  id = this;           //this makes the currently clicked square the new id
+  //event.target.classList.remove("red","black")              //removes piece
 
 
   let x = parseInt(event.target.dataset.row);        
   let y = parseInt(event.target.dataset.column);     
 
-  CheckLegalMove(event)
+  CheckLegalMove(event);
 
   //Move(x, y);       //calls the move function which just removes the clicked piece from the JS grid
 
 
 }
 
-// this resets the entire board black after every click
+// this resets the playing field black after every click
 function unhighlight() {
-
   for (var i = 0; i < visualGrid.length; i++) {
 
     var td = visualGrid[i];
-  
-    // Check if the data-row attribute is even
-    if (td.getAttribute("data-row") % 2 == 1) {
+    
+    if (td.getAttribute("data-row") % 2 == 1) {        //makes even rows and columns black
       if (td.getAttribute("data-column") % 2 == 1) {
         td.style.backgroundColor = "black";
       }
     }
-    if (td.getAttribute("data-row") % 2 == 0) {
+    
+    if (td.getAttribute("data-row") % 2 == 0) {        //makes odd rows and columns black
       if (td.getAttribute("data-column") % 2 == 0) {
         td.style.backgroundColor = "black";
       }
@@ -233,40 +234,48 @@ function unhighlight() {
 }
 
 function CheckLegalMove(event) {
+  let currentRow = parseInt(event.target.dataset.row);          //clicked row
+  let currentColumn = parseInt(event.target.dataset.column);    //clicked column
+  color = board.grid [currentRow][currentColumn]                //uses above to find the color of the piece inside the board array
 
-  let currentRow = parseInt(event.target.dataset.row);
-  let currentColumn = parseInt(event.target.dataset.column);
-  color = board.grid [currentRow][currentColumn]
-  console.log(color)
-
-    if (color = "red") {
-      var leftsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn+1) + '"]');
-      var rightsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn-1) + '"]');
-      
-      leftsquare.forEach(function(element) {
-        element.style.backgroundColor = "blue";
+  if (color == "red") {                                        
+    var leftsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn+1) + '"]');   //red grabs forward a row and left
+    var rightsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn-1) + '"]');  //red grabs forward a row and right
+    
+    if (board.grid[currentRow+1][currentColumn+1] == null) {   //checks if the forward left position is empty
+      leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
+        element.style.backgroundColor = "lightblue";           //change to blue
       });
+        elseif (board.grid[currentRow+1][currentColumn+1] == "black"); {
+          console.log("hello ")
 
-      rightsquare.forEach(function(element) {
-        element.style.backgroundColor = "blue";
-      });
+        }
 
     }
 
-    if (color = "black") {
-      var leftsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn+1) + '"]');
-      var rightsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn-1) + '"]');
-      
-      leftsquare.forEach(function(element) {
-        element.style.backgroundColor = "grey";
+    if (board.grid[currentRow+1][currentColumn-1] == null) {   //checks if the forward right position is empty
+      rightsquare.forEach(function(element) {                  //needed a for each function to work - not sure why
+        element.style.backgroundColor = "lightblue";           //change to blue
       });
+    }
+  }
 
-      rightsquare.forEach(function(element) {
-        element.style.backgroundColor = "grey";
+  if (color == "black") {                               
+    var leftsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn+1) + '"]');   //black grabs down a row and right
+    var rightsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn-1) + '"]');  //black grabs down a row and right
+    
+    if (board.grid[currentRow-1][currentColumn+1] == null) {   //checks if the backward left position is empty
+      leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
+        element.style.backgroundColor = "lightblue";           //change to blue
       });
-
     }
 
+    if (board.grid[currentRow-1][currentColumn-1] == null) {   //checks if the backward right position is empty
+      rightsquare.forEach(function(element) {                  //needed a for each function to work - not sure why
+        element.style.backgroundColor = "lightblue";           //change to blue
+      });
+    }
+  }
 }
 
 function highlightLegalMove() {
