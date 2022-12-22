@@ -241,6 +241,21 @@ function CheckLegalMove(event) {
       righsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
         element.style.backgroundColor = "lightblue";           //change to blue
       });
+<<<<<<< HEAD
+=======
+      righsquare.forEach(function(element) {
+        element.addEventListener('click', function() {
+          // Place the piece in the clicked square
+          board.placePiece(redpiece, currentRow+1, currentColumn+1);
+          board.removePiece(currentRow, currentColumn);
+          let clickedElement = document.querySelector('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn+1) + '"]');
+          let oldElement = document.querySelector('[data-row="' + (currentRow) + '"][data-column="' + (currentColumn) + '"]');
+          clickedElement.classList.add("red");
+          oldElement.classList.remove("red");
+        });
+      });
+      
+>>>>>>> 8bb90c5b2707297f6a7fb04cf5d3c67c14f6933d
     } else if (board.grid[currentRow+1][currentColumn+1] == "black") {
       if (board.grid[currentRow+2][currentColumn+2] == null) {   //checks if the next right position is empty to get ready to jump over
         righsquare = document.querySelectorAll('[data-row="' + (currentRow+2) + '"][data-column="' + (currentColumn+2) + '"]');   //red grabs forward 2 rows and left 2
@@ -255,6 +270,20 @@ function CheckLegalMove(event) {
       leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
         element.style.backgroundColor = "lightblue";           //change to blue
       });
+<<<<<<< HEAD
+=======
+      leftsquare.forEach(function(element) {
+        element.addEventListener('click', function() {
+          // Place the piece in the clicked square
+          board.placePiece(redpiece, currentRow+1, currentColumn-1);
+          board.removePiece(currentRow, currentColumn);
+          let clickedElement = document.querySelector('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn-1) + '"]');
+          let oldElement = document.querySelector('[data-row="' + (currentRow) + '"][data-column="' + (currentColumn) + '"]');
+          clickedElement.classList.add("red");
+          oldElement.classList.remove("red");
+        });
+      });
+>>>>>>> 8bb90c5b2707297f6a7fb04cf5d3c67c14f6933d
     } else if (board.grid[currentRow+1][currentColumn-1] == "black") {
       if (board.grid[currentRow+2][currentColumn-2] == null) {   //checks if the next left position is empty to get ready to jump over
         leftsquare = document.querySelectorAll('[data-row="' + (currentRow+2) + '"][data-column="' + (currentColumn-2) + '"]');   //red grabs forward 2 rows and left 2
