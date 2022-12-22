@@ -64,7 +64,6 @@ board.placePiece(blackpiece, 7, 3);
 board.placePiece(blackpiece, 7, 5);
 board.placePiece(blackpiece, 7, 7);
 
-board.placePiece(blackpiece, 3, 3);
 
 //#endregion
 
@@ -202,10 +201,6 @@ function onclick(event) {
   
   //event.target.classList.remove("red","black")              //removes piece
 
-
-  let x = parseInt(event.target.dataset.row);        
-  let y = parseInt(event.target.dataset.column);     
-
   CheckLegalMove(event);
 
   //Move(x, y);       //calls the move function which just removes the clicked piece from the JS grid
@@ -239,42 +234,67 @@ function CheckLegalMove(event) {
   color = board.grid [currentRow][currentColumn]                //uses above to find the color of the piece inside the board array
 
   if (color == "red") {                                        
-    var leftsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn+1) + '"]');   //red grabs forward a row and left
-    var rightsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn-1) + '"]');  //red grabs forward a row and right
+    var righsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn+1) + '"]');   //red grabs forward a row and left
+    var leftsquare = document.querySelectorAll('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn-1) + '"]');  //red grabs forward a row and right
     
-    if (board.grid[currentRow+1][currentColumn+1] == null) {   //checks if the forward left position is empty
+    if (board.grid[currentRow+1][currentColumn+1] == null) {   //checks if the forward right position is empty
+      righsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
+        element.style.backgroundColor = "lightblue";           //change to blue
+      });
+    } else if (board.grid[currentRow+1][currentColumn+1] == "black") {
+      if (board.grid[currentRow+2][currentColumn+2] == null) {   //checks if the next right position is empty to get ready to jump over
+        righsquare = document.querySelectorAll('[data-row="' + (currentRow+2) + '"][data-column="' + (currentColumn+2) + '"]');   //red grabs forward 2 rows and left 2
+        righsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
+          element.style.backgroundColor = "lightblue";           //change to blue
+        });
+      }
+    }
+    
+
+    if (board.grid[currentRow+1][currentColumn-1] == null) {   //checks if the forward left position is empty
       leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
         element.style.backgroundColor = "lightblue";           //change to blue
       });
-        elseif (board.grid[currentRow+1][currentColumn+1] == "black"); {
-          console.log("hello ")
-
-        }
-
-    }
-
-    if (board.grid[currentRow+1][currentColumn-1] == null) {   //checks if the forward right position is empty
-      rightsquare.forEach(function(element) {                  //needed a for each function to work - not sure why
-        element.style.backgroundColor = "lightblue";           //change to blue
-      });
+    } else if (board.grid[currentRow+1][currentColumn-1] == "black") {
+      if (board.grid[currentRow+2][currentColumn-2] == null) {   //checks if the next left position is empty to get ready to jump over
+        leftsquare = document.querySelectorAll('[data-row="' + (currentRow+2) + '"][data-column="' + (currentColumn-2) + '"]');   //red grabs forward 2 rows and left 2
+        leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
+          element.style.backgroundColor = "lightblue";           //change to blue
+        });
+      }
     }
   }
+
 
   if (color == "black") {                               
     var leftsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn+1) + '"]');   //black grabs down a row and right
     var rightsquare = document.querySelectorAll('[data-row="' + (currentRow-1) + '"][data-column="' + (currentColumn-1) + '"]');  //black grabs down a row and right
     
-    if (board.grid[currentRow-1][currentColumn+1] == null) {   //checks if the backward left position is empty
-      leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
-        element.style.backgroundColor = "lightblue";           //change to blue
+    if (board.grid[currentRow-1][currentColumn+1] == null) {    //checks if the backward left position is empty
+      leftsquare.forEach(function(element) {                    //needed a for each function to work - not sure why
+        element.style.backgroundColor = "lightblue";            //change to blue
       });
-    }
+    } else if (board.grid[currentRow-1][currentColumn+1] == "red") {
+      if (board.grid[currentRow-2][currentColumn+2] == null) {   //checks if the next left position is empty to get ready to jump over
+        leftsquare = document.querySelectorAll('[data-row="' + (currentRow-2) + '"][data-column="' + (currentColumn+2) + '"]');   //red grabs forward 2 rows and left 2
+        leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
+          element.style.backgroundColor = "lightblue";           //change to blue
+        });
+      }
+    } 
 
-    if (board.grid[currentRow-1][currentColumn-1] == null) {   //checks if the backward right position is empty
-      rightsquare.forEach(function(element) {                  //needed a for each function to work - not sure why
-        element.style.backgroundColor = "lightblue";           //change to blue
+    if (board.grid[currentRow-1][currentColumn-1] == null) {    //checks if the backward right position is empty
+      rightsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
+        element.style.backgroundColor = "lightblue";            //change to blue
       });
-    }
+    } else if (board.grid[currentRow-1][currentColumn-1] == "red") {
+      if (board.grid[currentRow-2][currentColumn-2] == null) {   //checks if the next right+ position is empty to get ready to jump over
+        rightsquare = document.querySelectorAll('[data-row="' + (currentRow-2) + '"][data-column="' + (currentColumn-2) + '"]');   //red grabs backward 2 rows and right 2
+        rightsquare.forEach(function(element) {                  //needed a for each function to work - not sure why
+          element.style.backgroundColor = "lightblue";           //change to blue
+        });
+      }
+    } 
   }
 }
 
