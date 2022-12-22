@@ -241,6 +241,18 @@ function CheckLegalMove(event) {
       righsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
         element.style.backgroundColor = "lightblue";           //change to blue
       });
+      righsquare.forEach(function(element) {
+        element.addEventListener('click', function() {
+          // Place the piece in the clicked square
+          board.placePiece(redpiece, currentRow+1, currentColumn+1);
+          board.removePiece(currentRow, currentColumn);
+          let clickedElement = document.querySelector('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn+1) + '"]');
+          let oldElement = document.querySelector('[data-row="' + (currentRow) + '"][data-column="' + (currentColumn) + '"]');
+          clickedElement.classList.add("red");
+          oldElement.classList.remove("red");
+        });
+      });
+      
     } else if (board.grid[currentRow+1][currentColumn+1] == "black") {
       if (board.grid[currentRow+2][currentColumn+2] == null) {   //checks if the next right position is empty to get ready to jump over
         righsquare = document.querySelectorAll('[data-row="' + (currentRow+2) + '"][data-column="' + (currentColumn+2) + '"]');   //red grabs forward 2 rows and left 2
@@ -254,6 +266,17 @@ function CheckLegalMove(event) {
     if (board.grid[currentRow+1][currentColumn-1] == null) {   //checks if the forward left position is empty
       leftsquare.forEach(function(element) {                   //needed a for each function to work - not sure why
         element.style.backgroundColor = "lightblue";           //change to blue
+      });
+      leftsquare.forEach(function(element) {
+        element.addEventListener('click', function() {
+          // Place the piece in the clicked square
+          board.placePiece(redpiece, currentRow+1, currentColumn-1);
+          board.removePiece(currentRow, currentColumn);
+          let clickedElement = document.querySelector('[data-row="' + (currentRow+1) + '"][data-column="' + (currentColumn-1) + '"]');
+          let oldElement = document.querySelector('[data-row="' + (currentRow) + '"][data-column="' + (currentColumn) + '"]');
+          clickedElement.classList.add("red");
+          oldElement.classList.remove("red");
+        });
       });
     } else if (board.grid[currentRow+1][currentColumn-1] == "black") {
       if (board.grid[currentRow+2][currentColumn-2] == null) {   //checks if the next left position is empty to get ready to jump over
